@@ -8,7 +8,7 @@ def canUnlockAll(boxes):
     opened_boxes = [0, *boxes[0]]
     # A key with the same number as a box opens that box
     for box in range(n):
-        if box in boxes[n] and box not in opened_boxes:
+        if box in boxes and box not in opened_boxes:
             opened_boxes.append(box)
     
     for box in range(n):
