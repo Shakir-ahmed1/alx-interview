@@ -2,22 +2,30 @@
 """ a module that checks unlockabily"""
 def canUnlockAll(boxes):
     """ a function that checks if a box is unlockable"""
-    if not boxes or len(boxes) == 1:
+    n = len(boxes)
+    if n <= 1:
         return True
-    locks = len(boxes) * [0]
-    pool = [0, *boxes[0]]
-
-    for tries in range(len(boxes)):
-        for pl in pool:
-            pool.extend(boxes[pl])
-            pool = list(set(pool))
-    for lp in range(len(boxes)):
-        if lp in pool:
-            locks[lp] = 1
-        else:
-            locks[lp] = 0
-
-    if 0 in locks:
+    opened_boxes = [0, *boxes[0]]
+    # A key with the same number as a box opens that box
+    for box in range(n):
+        if box in boxes[n] and box not in opened_boxes:
+            opened_boxes.append(box)
+    
+    for box in range(n):
+        for b in opened_boxes:
+            if b < n:
+                opened_boxes = list(set(opened_boxes.extend(boxes[b])))
+    
+    correct_keys = n * [0]
+    for box in range(n):
+        if box in opened_boxes:
+            correct_keys[box] = 1
+    
+    if 0 in correct_keys:
         return False
     else:
         return True
+
+
+
+    # Return True if all boxes can be opened, else return False
