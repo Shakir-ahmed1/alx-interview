@@ -16,5 +16,4 @@ def canUnlockAll(boxes):
                     opened_boxes.add(key)
                     new_boxes.add(key)
 
-    # Check if all boxes are opened
     return len(opened_boxes) == len(boxes)
