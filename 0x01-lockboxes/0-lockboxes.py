@@ -4,26 +4,13 @@
 
 def canUnlockAll(boxes):
     """ a function that checks if a box is unlockable"""
-    n = len(boxes)
-    if n <= 1 or not boxes:
-        return True
-    opened_boxes = [0, *boxes[0]]
-    for box in range(n):
-        if box in boxes and box not in opened_boxes:
-            opened_boxes.append(box)
+    opened_boxes = {0}
 
-    for box in range(n):
-        temp = opened_boxes.copy()
-        for b in opened_boxes:
-            if b < n:
-                temp.extend(boxes[b])
-        opened_boxes = sorted(set(temp))
+    # Iterate through opened boxes and add new keys to the set
+    for box in opened_boxes:
+        for key in boxes[box]:
+            if key < len(boxes) and key not in opened_boxes:
+                opened_boxes.add(key)
 
-    correct_keys = n * [0]
-    for box in range(n):
-        if box in opened_boxes:
-            correct_keys[box] = 1
-    if 0 in correct_keys:
-        return False
-    else:
-        return True
+    # Check if all boxes are opened
+    return len(opened_boxes) == len(boxes)
