@@ -14,7 +14,8 @@ def canUnlockAll(boxes):
     for box in range(n):
         for b in opened_boxes:
             if b < n:
-                opened_boxes = list(set(opened_boxes.extend(boxes[b])))
+                opened_boxes.extend(boxes[b])
+                opened_boxes = list(set(opened_boxes))
     
     correct_keys = n * [0]
     for box in range(n):
