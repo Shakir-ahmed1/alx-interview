@@ -3,7 +3,7 @@
 by only copying and pasting"""
 
 
-def minOperations(n):
+def minOperations(n: int) -> int:
     """ returns minimum operations to reach a number"""
     if n <= 0:
         return 0
