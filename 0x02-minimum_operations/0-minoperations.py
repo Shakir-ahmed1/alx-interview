@@ -8,7 +8,7 @@ def minOperations(n: int) -> int:
     if n <= 0:
         return 0
     elif n == 1:
-        return 1
+        return 0
     else:
         for i in range(2, int(n**0.5) + 1):
             if n % i == 0:
