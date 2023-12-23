@@ -12,14 +12,12 @@ status_codes = {'200': 0,'301': 0, '400': 0, '401': 0, '403': 0,
 try:
     for line in stdin:
         valid_line = re.match(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - '
-                              r'[.+] "GET \/projects\/260 HTTP\/1.1"'
-                              r'(\d{3}) (\d+)', line)
+                              r'\[.+\] "GET \/projects\/260 HTTP\/1.1"'
+                              r' (\d{3}) (\d+)', line)
 
         if not valid_line:
             continue
         status_code = re.group(1)
-        if status_code not in status_codes:
-            continue
 
         file_size = re.group(2)
         size_list.append(int(file_size))
