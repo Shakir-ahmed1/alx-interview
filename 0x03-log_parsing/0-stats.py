@@ -29,7 +29,7 @@ try:
         counter += 1
 
 
-except KeyboardInterrupt:
+except Exception:
     pass
 finally:
     total_file_size = sum(size_list)
