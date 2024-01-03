@@ -22,7 +22,7 @@ def validUTF8(data):
             if is_btwn(d, asc):
                 continue
             if is_btwn(d, cont):
-                return False
+                continue
             if is_btwn(d, len2) or is_btwn(d, len31) or is_btwn(d, len32):
                 temp.append(d)
         else:
