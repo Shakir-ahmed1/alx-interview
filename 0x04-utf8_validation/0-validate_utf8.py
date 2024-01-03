@@ -24,12 +24,13 @@ def validUTF8(data):
             if is_btwn(d, cont):
                 return False
             if is_btwn(d, len2) or is_btwn(d, len31) or is_btwn(d, len32):
-                return False
+                temp.append(d)
         else:
             if is_btwn(d, asc):
                 temp = []
                 continue
             if is_btwn(d, cont):
+                temp.append(d)
                 continue
             if is_btwn(d, len2) or is_btwn(d, len31) or is_btwn(d, len32):
                 continue
