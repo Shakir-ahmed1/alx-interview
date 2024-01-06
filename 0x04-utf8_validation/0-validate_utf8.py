@@ -1,9 +1,20 @@
 #!/usr/bin/python3
 """ utf validation module """
-def is_btwn(data, bounds):
-    if bounds[0] <= data <= bounds[1]:
-        return True
-    return False
+
+
+def status(number):
+    if number < 0b10000000:
+        return 0
+    if 0b10000000 <= number < 0b11000000:
+        return 1
+    if 0b11000000 <= number < 0b11100000:
+        return 2
+    if 0b11100000 <= number < 0b11110000:
+        return 3
+    if 0b11110000 <= number < 0b11111000:
+        return 4
+    return 5
+
 
 def validUTF8(data):
     """ UTF-8 validator """
@@ -15,23 +26,24 @@ def validUTF8(data):
     len31 = (0xe1, 0x3c)
     len32 = (0x3e, 0x3f)
     temp = []
+
+    temp_count = 0
     for d in data:
-        if not 256 > d >= 0:
+        st = status(d)
+        if 0 > d or d > 255:
             return False
+        if st == 0 and not temp:
+            continue
+
         if not temp:
-            if is_btwn(d, asc):
-                continue
-            if is_btwn(d, cont):
-                continue
-            if is_btwn(d, len2) or is_btwn(d, len31) or is_btwn(d, len32):
-                temp.append(d)
+            if st == 1 or temp_count:
+                return False
+            temp_count = st + 1
         else:
-            if is_btwn(d, asc):
-                temp = []
-            if is_btwn(d, cont):
-                temp.append(d)
-            if is_btwn(d, len2) or is_btwn(d, len31) or is_btwn(d, len32):
+            if st != 1 or not temp_count:
                 return False
-            if d in invald:
-                return False
+        temp_count -= 1
+        temp.append(d)
+        if temp_count == 0:
+            temp = []
     return True
