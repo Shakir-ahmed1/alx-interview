@@ -30,6 +30,9 @@ def validUTF8(data):
     for d in data:
         d = d % 256
         st = status(d)
+        print(d, bin(d))
+        if st == 5:
+            return False
         if st == 0 and not temp:
             continue
 
@@ -44,4 +47,6 @@ def validUTF8(data):
         temp.append(d)
         if temp_count == 0:
             temp = []
+    if temp_count != 0:
+        return False
     return True
