@@ -37,7 +37,7 @@ def validUTF8(data):
 
         if not temp:
             if st == 1 or temp_count:
-               return False
+                return False
             temp_count = st
         else:
             if st != 1 or not temp_count:
