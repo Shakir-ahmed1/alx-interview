@@ -20,17 +20,16 @@ def validUTF8(data):
     """ UTF-8 validator """
     invalid_numbers = [0xC1, 0xC0, 0xF5, 0XF6, 0XF7, 0XF8, 0XF9, 0XFA,
                        0XFB, 0XFC, 0XFD, 0XFE, 0XFF]
-    temp = []
     temp_count = 0
     for d in data:
         d = d % 256
         st = status(d)
         if st == 5:
             return False
-        if st == 0 and not temp:
+        if st == 0 and not temp_count:
             continue
 
-        if not temp:
+        if not temp_count:
             if st == 1 or temp_count:
                 return False
             temp_count = st
@@ -38,9 +37,6 @@ def validUTF8(data):
             if st != 1 or not temp_count:
                 return False
         temp_count -= 1
-        temp.append(d)
-        if temp_count == 0:
-            temp = []
     if temp_count != 0:
         return False
     return True
