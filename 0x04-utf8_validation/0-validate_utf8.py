@@ -26,12 +26,10 @@ def validUTF8(data):
     len31 = (0xe1, 0x3c)
     len32 = (0x3e, 0x3f)
     temp = []
-    print(bin(467))
     temp_count = 0
     for d in data:
         d = d % 256
         st = status(d)
-        print(d, bin(d), st)
         if st == 0 and not temp:
             continue
 
