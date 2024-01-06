@@ -18,8 +18,6 @@ def status(number):
 
 def validUTF8(data):
     """ UTF-8 validator """
-    invalid_numbers = [0xC1, 0xC0, 0xF5, 0XF6, 0XF7, 0XF8, 0XF9, 0XFA,
-                       0XFB, 0XFC, 0XFD, 0XFE, 0XFF]
     temp_count = 0
     for d in data:
         d = d % 256
