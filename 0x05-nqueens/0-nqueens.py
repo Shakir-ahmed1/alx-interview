@@ -44,4 +44,3 @@ for j in result:
     rs.append(temp)
 for r in rs:
     print(r)
-
