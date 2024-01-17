@@ -33,7 +33,7 @@ def nqueens(n):
 
 
 if len(sys.argv) != 2:
-    print("Usage:  nqueens N")
+    print("Usage: nqueens N")
     sys.exit(1)
 result = [solution for solution in nqueens(sys.argv[1])]
 rs = []
