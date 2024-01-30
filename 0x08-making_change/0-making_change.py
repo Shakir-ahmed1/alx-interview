@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ a module to make a change"""
+
+
 def makeChange(coins, total):
     """ making changes """
     if total <= 0:
@@ -15,5 +17,4 @@ def makeChange(coins, total):
             elif coin <= total and coin >= 0:
                 total -= coin
                 coin_count += 1
-
     return -1
