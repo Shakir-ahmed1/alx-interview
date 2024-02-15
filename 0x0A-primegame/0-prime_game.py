@@ -34,6 +34,7 @@ def isWinner(x, nums):
     players = ['Maria', 'Ben']
     results = [0, 0]
     rounds = 0
+    x = x if x > 0 else 0
     for n in nums:
         if rounds == x:
             break
