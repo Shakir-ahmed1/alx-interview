@@ -19,21 +19,16 @@ def isWinner(x, nums):
     """ determines who is the winner in the prime game"""
     players = ['Maria', 'Ben']
     results = [0, 0]
-    index = 0
     rounds = 0
     for n in nums:
         if rounds == x:
             break
         rounds += 1
         primes = get_primes(n + 1)
-        index = 0
-        for p in range(n + 1):
-            if primes == []:
-                results[(index + 1) % 2] += 1
-                break
-            else:
-                primes.pop(0)
-                index = (index + 1) % 2
+        index = ((len(primes) + 1) % 2)
+        results[index] += 1
+        # print(primes, players[index], n)
+    # print(results)
 
     if results[0] > results[1]:
         return players[0]
