@@ -24,7 +24,7 @@ def isWinner(x, nums):
         if rounds == x:
             break
         rounds += 1
-        primes = get_primes(n + 1)
+        primes = get_primes(n)
         index = (len(primes)) % 2
         results[index] += 1
 
