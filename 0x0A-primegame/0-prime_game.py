@@ -26,11 +26,17 @@ def isWinner(s, nums):
         for p in range(n + 1):
             if primes == []:
                 results[(index + 1) % 2] += 1
+                print(players[(index + 1) % 2])
                 break
             else:
                 primes.pop(0)
                 index = (index + 1) % 2
     if results[0] > results[1]:
         return players[0]
-    else:
+    elif results[0] < results[1]:
         return players[1]
+    else:
+        return None
+
+print("Winner: {}".format(isWinner(5, [4,5,1])))
+print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
