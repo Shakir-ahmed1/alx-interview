@@ -26,7 +26,6 @@ def isWinner(s, nums):
         for p in range(n + 1):
             if primes == []:
                 results[(index + 1) % 2] += 1
-                print(players[(index + 1) % 2])
                 break
             else:
                 primes.pop(0)
