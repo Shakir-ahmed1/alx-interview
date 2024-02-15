@@ -15,11 +15,12 @@ def get_primes(limit):
     return primes
 
 
-def isWinner(s, nums):
+def isWinner(x, nums):
     """ determines who is the winner in the prime game"""
     players = ['Maria', 'Ben']
     results = [0, 0]
     index = 0
+    rounds = 0
     for n in nums:
         primes = get_primes(n + 1)
         index = 0
@@ -30,9 +31,16 @@ def isWinner(s, nums):
             else:
                 primes.pop(0)
                 index = (index + 1) % 2
+        if rounds == len(nums):
+            break
     if results[0] > results[1]:
         return players[0]
     elif results[0] < results[1]:
         return players[1]
     else:
         return None
+
+
+print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
+print("Winner: {}".format(isWinner(0, [])))
+print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
