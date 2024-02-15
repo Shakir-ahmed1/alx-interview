@@ -5,7 +5,7 @@
 def get_primes(limit):
     """ generates prime numbers"""
     primes = []
-    for number in range(2, limit):
+    for number in range(2, limit + 1):
         temp = []
         for num in range(2, number):
             if (number % num == 0):
@@ -25,10 +25,8 @@ def isWinner(x, nums):
             break
         rounds += 1
         primes = get_primes(n + 1)
-        index = ((len(primes) + 1) % 2)
+        index = (len(primes)) % 2
         results[index] += 1
-        # print(primes, players[index], n)
-    # print(results)
 
     if results[0] > results[1]:
         return players[0]
@@ -36,3 +34,5 @@ def isWinner(x, nums):
         return players[1]
     else:
         return None
+
+print((get_primes(3)))
