@@ -22,6 +22,9 @@ def isWinner(x, nums):
     index = 0
     rounds = 0
     for n in nums:
+        if rounds == x:
+            break
+        rounds += 1
         primes = get_primes(n + 1)
         index = 0
         for p in range(n + 1):
@@ -31,11 +34,13 @@ def isWinner(x, nums):
             else:
                 primes.pop(0)
                 index = (index + 1) % 2
-        if rounds == len(nums):
-            break
+
     if results[0] > results[1]:
         return players[0]
     elif results[0] < results[1]:
         return players[1]
     else:
         return None
+print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
+print("Winner: {}".format(isWinner(3, [5, 1, 4])))
+print("Winner: {}".format(isWinner(0, [])))
