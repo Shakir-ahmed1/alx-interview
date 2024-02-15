@@ -37,6 +37,3 @@ def isWinner(s, nums):
         return players[1]
     else:
         return None
-
-print("Winner: {}".format(isWinner(5, [4,5,1])))
-print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
