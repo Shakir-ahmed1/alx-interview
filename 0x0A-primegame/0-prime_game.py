@@ -34,5 +34,3 @@ def isWinner(x, nums):
         return players[1]
     else:
         return None
-
-print((get_primes(3)))
