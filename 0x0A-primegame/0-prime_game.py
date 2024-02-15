@@ -19,19 +19,17 @@ def count_primes(n):
 
 def isWinner(x, nums):
     """ determines who is the winner in the prime game"""
-    players = ['Maria', 'Ben']
-    results = [0, 0]
-    rounds = 0
+    maria = 0
+    ben = 0
     for n in nums:
-        if rounds == x:
-            break
-        rounds += 1
-        index = (count_primes(n) + 1) % 2
-        results[index] += 1
-
-    if results[0] > results[1]:
-        return players[0]
-    elif results[0] < results[1]:
-        return players[1]
+        primes = count_primes(n)
+        if primes % 2 == 1:
+            maria += 1
+        else:
+            ben += 1
+    if maria > ben:
+        return "Maria"
+    elif maria < ben:
+        return "Ben"
     else:
         return None
