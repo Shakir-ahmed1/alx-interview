@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-
+""" prime game implimentation """
 def get_primes(limit):
+    """ generates prime numbers"""
     primes = []
     for number in range(2, limit):
         temp = []
@@ -13,6 +14,7 @@ def get_primes(limit):
 
 
 def isWinner(s, nums):
+    """ determines who is the winner in the prime game"""
     players = ['Maria', 'Ben']
     results = [0, 0]
     index = 0
